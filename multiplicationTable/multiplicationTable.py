@@ -19,7 +19,9 @@ sheet.title = "Multi Table" # rename the sheet
 
 # parse the command line
 
-multi_number_cmdline = sys.argv[1] # should be the first argument in the command line i.e. the number, if you use 0 you get the program name
+# multi_number_cmdline = sys.argv[1] # should be the first argument in the command line i.e. the number, if you use 0 you get the program name
+
+multi_number_cmdline = "3" # set for purposes of testing, disable at end of development
 
 logging.debug('The command line value entered for the max multi-table value is:  %s' % (multi_number_cmdline))
 
@@ -28,13 +30,15 @@ logging.debug('The command line value entered for the max multi-table value is: 
 for x in range(2,int(multi_number_cmdline) + 2):  # since you started the loop at 2, then you need to shift the ending value by 2
 	column_letter = get_column_letter(x)
 	# the row stays the same i.e. 1
-	logging.debug('The current column letter is:  %s' % (column_letter))
+	logging.debug('The current header column letter is:  %s' % (column_letter))
 	sheet[column_letter + '1'] = x # set that cell to the current x value in the loop
-	logging.debug('The current column letter and row number changed is:  %s' % (column_letter + '1'))
+	logging.debug('The current header column letter and row number changed is:  %s' % (column_letter + '1'))
 
 # create the frozen header column
 
-
+for x in range(2,int(multi_number_cmdline) + 2):
+	sheet["A" + x] = x
+	logging.debug('The current header column letter and row number changed is:  %s' % ("A" + x))
 
 # save the final sheet
 
