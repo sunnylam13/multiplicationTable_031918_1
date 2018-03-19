@@ -40,6 +40,11 @@ for x in range(2,int(multi_number_cmdline) + 2):
 	sheet["A" + str(x)] = x
 	logging.debug('Frozen column header - The current header column letter and row number changed is:  %s' % ("A" + str(x)))
 
+# freeze the panes
+
+sheet.freeze_panes = 'B2' # row 1 and columns A
+logging.debug('Panes frozen creating header row and header column.')
+
 # save the final sheet
 
 # wb.save('multiplicationTable.xlsx')
