@@ -30,15 +30,15 @@ logging.debug('The command line value entered for the max multi-table value is: 
 for x in range(2,int(multi_number_cmdline) + 2):  # since you started the loop at 2, then you need to shift the ending value by 2
 	column_letter = get_column_letter(x)
 	# the row stays the same i.e. 1
-	logging.debug('The current header column letter is:  %s' % (column_letter))
+	logging.debug('Frozen row header - The current header column letter is:  %s' % (column_letter))
 	sheet[column_letter + '1'] = x # set that cell to the current x value in the loop
-	logging.debug('The current header column letter and row number changed is:  %s' % (column_letter + '1'))
+	logging.debug('Frozen row header - The current header column letter and row number changed is:  %s' % (column_letter + '1'))
 
 # create the frozen header column
 
 for x in range(2,int(multi_number_cmdline) + 2):
-	sheet["A" + x] = x
-	logging.debug('The current header column letter and row number changed is:  %s' % ("A" + x))
+	sheet["A" + str(x)] = x
+	logging.debug('Frozen column header - The current header column letter and row number changed is:  %s' % ("A" + str(x)))
 
 # save the final sheet
 
