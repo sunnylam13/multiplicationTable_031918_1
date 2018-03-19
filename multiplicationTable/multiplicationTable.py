@@ -4,6 +4,10 @@
 
 import openpyxl, sys
 
+from openpyxl.styles import Font
+from openpyxl.styles import Color, Fill
+from openpyxl.cell import Cell
+
 try:
 	from openpyxl.cell import column_index_from_string,get_column_letter
 except ImportError:
@@ -25,6 +29,10 @@ multi_number_cmdline = "3" # set for purposes of testing, disable at end of deve
 
 logging.debug('The command line value entered for the max multi-table value is:  %s' % (multi_number_cmdline))
 
+# create the font style for the headers
+
+boldHeaderFont1 = Font(bold=True) # font object
+
 # create the frozen header row
 
 for x in range(2,int(multi_number_cmdline) + 2):  # since you started the loop at 2, then you need to shift the ending value by 2
@@ -33,18 +41,26 @@ for x in range(2,int(multi_number_cmdline) + 2):  # since you started the loop a
 	logging.debug('Frozen row header - The current header column letter is:  %s' % (column_letter))
 	sheet[column_letter + '1'] = x # set that cell to the current x value in the loop
 	logging.debug('Frozen row header - The current header column letter and row number changed is:  %s' % (column_letter + '1'))
+	# alter the font to bold
+	sheet[column_letter + '1'].font = boldHeaderFont1
+	logging.debug('The font for %s has been altered.' % (column_letter + '1'))
 
 # create the frozen header column
 
 for x in range(2,int(multi_number_cmdline) + 2):
 	sheet["A" + str(x)] = x
 	logging.debug('Frozen column header - The current header column letter and row number changed is:  %s' % ("A" + str(x)))
+	# alter the font to bold
+	sheet["A" + str(x)].font = boldHeaderFont1
+	logging.debug('The font for %s has been altered.' % ("A" + str(x)))
 
 # freeze the panes
 
 sheet.freeze_panes = 'B2' # row 1 and columns A
 logging.debug('Panes frozen creating header row and header column.')
 
+
 # save the final sheet
 
-# wb.save('multiplicationTable.xlsx')
+wb.save('multiplicationTable.xlsx')
+logging.debug('Spreadsheet file saved.')
