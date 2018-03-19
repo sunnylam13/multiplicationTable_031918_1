@@ -25,8 +25,11 @@ logging.debug('The command line value entered for the max multi-table value is: 
 
 # create the frozen header row
 
-# for x in range():
-# 	pass
+for x in range(2,int(multi_number_cmdline) + 2):  # since you started the loop at 2, then you need to shift the ending value by 2
+	column_letter = get_column_letter(x)
+	# the row stays the same i.e. 1
+	logging.debug('The current column letter is:  %s' % (column_letter))
+	sheet[column_letter + '1'] = x # set that cell to the current x value in the loop
 
 # create the frozen header column
 
@@ -34,4 +37,4 @@ logging.debug('The command line value entered for the max multi-table value is: 
 
 # save the final sheet
 
-# wb.save('multiTable.xlsx')
+# wb.save('multiplicationTable.xlsx')
