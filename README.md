@@ -4,7 +4,9 @@ The program takes a number *N* from the command line and creates an *N x N* mult
 
 ## Execution
 
+	python3 multiplicationTable.py XXX
 
+where XX is the highest multiplication number i.e. 6 means 6 x 6
 
 ## Resources
 
