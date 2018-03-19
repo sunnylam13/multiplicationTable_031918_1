@@ -2,7 +2,7 @@
 
 #! python3
 
-import openpyxl
+import openpyxl, sys
 
 try:
 	from openpyxl.cell import column_index_from_string,get_column_letter
@@ -17,18 +17,16 @@ wb = openpyxl.Workbook() # create the workbook
 sheet = wb.active # switch to the active sheet, there should only be one
 sheet.title = "Multi Table" # rename the sheet
 
-# get the user input
+# parse the command line
 
-print("""
-		Please enter the highest number of the multiplication table.\n
-		i.e. if you want a 6 x 6 multiplication table, please enter 6.
-	""")
-user_input = input(">  ")
+multi_number_cmdline = sys.argv[1] # should be the first argument in the command line i.e. the number, if you use 0 you get the program name
+
+logging.debug('The command line value entered for the max multi-table value is:  %s' % (multi_number_cmdline))
 
 # create the frozen header row
 
-for x in range():
-	pass
+# for x in range():
+# 	pass
 
 # create the frozen header column
 
