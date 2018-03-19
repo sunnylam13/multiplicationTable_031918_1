@@ -15,7 +15,7 @@ except ImportError:
 
 import logging
 logging.basicConfig(level=logging.DEBUG, format=" %(asctime)s - %(levelname)s - %(message)s")
-# logging.disable(logging.CRITICAL)
+logging.disable(logging.CRITICAL)
 
 wb = openpyxl.Workbook() # create the workbook
 sheet = wb.active # switch to the active sheet, there should only be one
@@ -23,9 +23,9 @@ sheet.title = "Multi Table" # rename the sheet
 
 # parse the command line
 
-# multi_number_cmdline = sys.argv[1] # should be the first argument in the command line i.e. the number, if you use 0 you get the program name
+multi_number_cmdline = sys.argv[1] # should be the first argument in the command line i.e. the number, if you use 0 you get the program name
 
-multi_number_cmdline = "3" # set for purposes of testing, disable at end of development
+# multi_number_cmdline = "3" # set for purposes of testing, disable at end of development
 
 logging.debug('The command line value entered for the max multi-table value is:  %s' % (multi_number_cmdline))
 
