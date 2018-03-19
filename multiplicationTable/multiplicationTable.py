@@ -39,7 +39,7 @@ for x in range(2,int(multi_number_cmdline) + 2):  # since you started the loop a
 	column_letter = get_column_letter(x)
 	# the row stays the same i.e. 1
 	logging.debug('Frozen row header - The current header column letter is:  %s' % (column_letter))
-	sheet[column_letter + '1'] = x # set that cell to the current x value in the loop
+	sheet[column_letter + '1'] = x - 1 # set that cell to the current x value in the loop
 	logging.debug('Frozen row header - The current header column letter and row number changed is:  %s' % (column_letter + '1'))
 	# alter the font to bold
 	sheet[column_letter + '1'].font = boldHeaderFont1
@@ -48,7 +48,7 @@ for x in range(2,int(multi_number_cmdline) + 2):  # since you started the loop a
 # create the frozen header column
 
 for x in range(2,int(multi_number_cmdline) + 2):
-	sheet["A" + str(x)] = x
+	sheet["A" + str(x)] = x - 1
 	logging.debug('Frozen column header - The current header column letter and row number changed is:  %s' % ("A" + str(x)))
 	# alter the font to bold
 	sheet["A" + str(x)].font = boldHeaderFont1
@@ -59,6 +59,19 @@ for x in range(2,int(multi_number_cmdline) + 2):
 sheet.freeze_panes = 'B2' # row 1 and columns A
 logging.debug('Panes frozen creating header row and header column.')
 
+# begin filling in the multiplication values
+
+for colValue in range(2,int(multi_number_cmdline) + 2):
+	column_letter = get_column_letter(colValue)
+	logging.debug('Frozen row header - The current header column letter is:  %s' % (column_letter))
+	logging.debug('Frozen row header - The current header column label is:  %i' % (colValue - 1))
+
+	# now to fill each value row by row within the column
+	for rowValue in range(2,int(multi_number_cmdline) + 2):
+		# logging.debug('The current column value is:  %i' % (colValue - 1))
+		# logging.debug('The current row value is:  %i' % (rowValue - 1))
+		sheet[column_letter + str(rowValue)] = (colValue - 1) * (rowValue - 1)
+		logging.debug('The multiplication value set is:  %i' % ((colValue - 1) * (rowValue - 1)))
 
 # save the final sheet
 
