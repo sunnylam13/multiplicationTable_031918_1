@@ -30,6 +30,7 @@ for x in range(2,int(multi_number_cmdline) + 2):  # since you started the loop a
 	# the row stays the same i.e. 1
 	logging.debug('The current column letter is:  %s' % (column_letter))
 	sheet[column_letter + '1'] = x # set that cell to the current x value in the loop
+	logging.debug('The current column letter and row number changed is:  %s' % (column_letter + '1'))
 
 # create the frozen header column
 
